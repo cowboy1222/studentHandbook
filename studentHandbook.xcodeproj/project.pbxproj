@@ -12,6 +12,13 @@
 		DF24D0821E35DBC20075F5A5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF24D0801E35DBC20075F5A5 /* Main.storyboard */; };
 		DF24D0841E35DBC20075F5A5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DF24D0831E35DBC20075F5A5 /* Assets.xcassets */; };
 		DF24D0871E35DBC20075F5A5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF24D0851E35DBC20075F5A5 /* LaunchScreen.storyboard */; };
+		DF3626951E9B405200757448 /* mainPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF3626941E9B405200757448 /* mainPageViewController.swift */; };
+		DF3626971E9B4A7C00757448 /* QRCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF3626961E9B4A7C00757448 /* QRCodeViewController.swift */; };
+		DF3626991E9B4B5E00757448 /* noticeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF3626981E9B4B5E00757448 /* noticeViewController.swift */; };
+		DF36269B1E9C7C0700757448 /* attendanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF36269A1E9C7C0700757448 /* attendanceViewController.swift */; };
+		DF36269D1E9C7C1700757448 /* homeworkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF36269C1E9C7C1700757448 /* homeworkViewController.swift */; };
+		DF36269F1E9C7C2400757448 /* handbookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF36269E1E9C7C2400757448 /* handbookViewController.swift */; };
+		DF8DB85C1EA1F5510068E563 /* CellDescriptor.plist in Resources */ = {isa = PBXBuildFile; fileRef = DF8DB85B1EA1F5510068E563 /* CellDescriptor.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +29,13 @@
 		DF24D0831E35DBC20075F5A5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DF24D0861E35DBC20075F5A5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DF24D0881E35DBC20075F5A5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DF3626941E9B405200757448 /* mainPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = mainPageViewController.swift; sourceTree = "<group>"; };
+		DF3626961E9B4A7C00757448 /* QRCodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRCodeViewController.swift; sourceTree = "<group>"; };
+		DF3626981E9B4B5E00757448 /* noticeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = noticeViewController.swift; sourceTree = "<group>"; };
+		DF36269A1E9C7C0700757448 /* attendanceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = attendanceViewController.swift; sourceTree = "<group>"; };
+		DF36269C1E9C7C1700757448 /* homeworkViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = homeworkViewController.swift; sourceTree = "<group>"; };
+		DF36269E1E9C7C2400757448 /* handbookViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = handbookViewController.swift; sourceTree = "<group>"; };
+		DF8DB85B1EA1F5510068E563 /* CellDescriptor.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = CellDescriptor.plist; path = ../../../Downloads/CellDescriptor.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +74,13 @@
 				DF24D0831E35DBC20075F5A5 /* Assets.xcassets */,
 				DF24D0851E35DBC20075F5A5 /* LaunchScreen.storyboard */,
 				DF24D0881E35DBC20075F5A5 /* Info.plist */,
+				DF3626941E9B405200757448 /* mainPageViewController.swift */,
+				DF3626961E9B4A7C00757448 /* QRCodeViewController.swift */,
+				DF3626981E9B4B5E00757448 /* noticeViewController.swift */,
+				DF36269A1E9C7C0700757448 /* attendanceViewController.swift */,
+				DF36269C1E9C7C1700757448 /* homeworkViewController.swift */,
+				DF36269E1E9C7C2400757448 /* handbookViewController.swift */,
+				DF8DB85B1EA1F5510068E563 /* CellDescriptor.plist */,
 			);
 			path = studentHandbook;
 			sourceTree = "<group>";
@@ -124,6 +145,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DF24D0871E35DBC20075F5A5 /* LaunchScreen.storyboard in Resources */,
+				DF8DB85C1EA1F5510068E563 /* CellDescriptor.plist in Resources */,
 				DF24D0841E35DBC20075F5A5 /* Assets.xcassets in Resources */,
 				DF24D0821E35DBC20075F5A5 /* Main.storyboard in Resources */,
 			);
@@ -137,7 +159,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				DF24D07F1E35DBC20075F5A5 /* ViewController.swift in Sources */,
+				DF36269D1E9C7C1700757448 /* homeworkViewController.swift in Sources */,
+				DF36269B1E9C7C0700757448 /* attendanceViewController.swift in Sources */,
 				DF24D07D1E35DBC20075F5A5 /* AppDelegate.swift in Sources */,
+				DF36269F1E9C7C2400757448 /* handbookViewController.swift in Sources */,
+				DF3626971E9B4A7C00757448 /* QRCodeViewController.swift in Sources */,
+				DF3626951E9B405200757448 /* mainPageViewController.swift in Sources */,
+				DF3626991E9B4B5E00757448 /* noticeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -299,6 +327,7 @@
 				DF24D08D1E35DBC20075F5A5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

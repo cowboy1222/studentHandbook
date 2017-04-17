@@ -9,11 +9,22 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
+    
+    
     @IBOutlet weak var userEmailTextField: UITextField!
     @IBOutlet weak var userPasswordTextField: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let username = UserDefaults.standard.string(forKey: "username");
+        let password = UserDefaults.standard.string(forKey: "password");
+        if(username != nil && password != nil){
+        
+            performSegue(withIdentifier: "homePage", sender: self)
+        
+        }
         // Do any additional setup after loading the view, typically from a nib.
     }
 
@@ -22,49 +33,77 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    
+    
     @IBAction func loginButton(sender: AnyObject) {
         
-        let userEmail = userEmailTextField.text;
-        let userPassword = userPasswordTextField.text;
+        let username = userEmailTextField.text;
+        let password = userPasswordTextField.text;
         
-        if (userEmail!.isEmpty || userPassword!.isEmpty)
+        if (username!.isEmpty || password!.isEmpty)
         {
             displayMyAlertMessage(userMessage: "All fields are equired.");
             return;
         }
         
-        let myUrl = URL(string: "https://lenchan139.org/myWorks/fyp/android/login.php?username=admin&password=pw")
-        let request = NSMutableURLRequest(url: myUrl!);
-        request.httpMethod = "POST";
-        
-        let postString = "userEmail=\(userEmail)&userPassword=\(userPassword)";
-        
-        request.httpBody = postString.data(using: String.Encoding.utf8);
+        let urlString = "https://lenchan139.org/myWorks/fyp/android/attendDetails.php?username=" + username! + "&password=" + password!;
         
         
-        let task = URLSession.shared.dataTask(with: myUrl!) { data, response, error in
-            guard error == nil else {
+        let url = URL(string: urlString)
+        URLSession.shared.dataTask(with:url!) { (data, response, error) in
+            if error != nil {
                 print(error!)
-                return
-            }
-            guard let data = data else {
-                print("Data is empty")
-                return
+            } else {
+                do {
+                    
+                    let parsedData = try JSONSerialization.jsonObject(with: data!, options: []) as! [String:Any]
+                    //print(parsedData);
+                    let isVaild = parsedData["isVaild"] as! Bool;
+                    let loggedUser = parsedData["username"] as? String;
+                    let dictStudAttend = parsedData["studArray"] as! NSArray;
+                    
+                    
+                    var output : String;
+                    if(isVaild && loggedUser != nil){
+                        output = loggedUser! + " is vaild";
+                        for i in 0...dictStudAttend.count-1{
+                            let row = dictStudAttend[i] as! NSDictionary;
+                            let name = row["student_name"] as! String;
+                            print("student " + String(i) + "'s name is " + name);
+                        }
+                        
+                        UserDefaults.standard.set(true, forKey: "isLoggedIn");
+                        UserDefaults.standard.synchronize();
+                        
+                        UserDefaults.standard.set(username, forKey: "username");
+                        UserDefaults.standard.set(password, forKey: "password");
+                        UserDefaults.standard.synchronize()
+                        let username = UserDefaults.standard.string(forKey: "username");
+                        print(username!);
+                        
+                    }else if(loggedUser != nil){
+                        output = loggedUser! + " is not vaild";
+                    }else{
+                        output = "InVaild!";
+                    }
+                    print(output);
+                } catch let error as NSError {
+                    print(error)
+                }
             }
             
-            let json = try! JSONSerialization.jsonObject(with: data, options: [])
-            print(json)
+            }.resume()
+        let isLoggedIn = UserDefaults.standard.bool(forKey: "isLoggedIn");
+        if (isLoggedIn) {
+            performSegue(withIdentifier: "homePage", sender: self)
         }
-        
-        task.resume()
-        
         
         
     }
     
     func displayMyAlertMessage(userMessage:String)
     {
-        var loginAlert = UIAlertController(title:"Alert", message:userMessage, preferredStyle:UIAlertControllerStyle.alert);
+        let loginAlert = UIAlertController(title:"Alert", message:userMessage, preferredStyle:UIAlertControllerStyle.alert);
         
         let doneAction =  UIAlertAction(title:"done", style:UIAlertActionStyle.default, handler:nil);
         
