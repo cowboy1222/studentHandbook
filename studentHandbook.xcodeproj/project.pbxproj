@@ -18,7 +18,6 @@
 		DF36269B1E9C7C0700757448 /* attendanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF36269A1E9C7C0700757448 /* attendanceViewController.swift */; };
 		DF36269D1E9C7C1700757448 /* homeworkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF36269C1E9C7C1700757448 /* homeworkViewController.swift */; };
 		DF36269F1E9C7C2400757448 /* handbookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF36269E1E9C7C2400757448 /* handbookViewController.swift */; };
-		DF8DB85C1EA1F5510068E563 /* CellDescriptor.plist in Resources */ = {isa = PBXBuildFile; fileRef = DF8DB85B1EA1F5510068E563 /* CellDescriptor.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,7 +34,6 @@
 		DF36269A1E9C7C0700757448 /* attendanceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = attendanceViewController.swift; sourceTree = "<group>"; };
 		DF36269C1E9C7C1700757448 /* homeworkViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = homeworkViewController.swift; sourceTree = "<group>"; };
 		DF36269E1E9C7C2400757448 /* handbookViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = handbookViewController.swift; sourceTree = "<group>"; };
-		DF8DB85B1EA1F5510068E563 /* CellDescriptor.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = CellDescriptor.plist; path = ../../../Downloads/CellDescriptor.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,7 +78,6 @@
 				DF36269A1E9C7C0700757448 /* attendanceViewController.swift */,
 				DF36269C1E9C7C1700757448 /* homeworkViewController.swift */,
 				DF36269E1E9C7C2400757448 /* handbookViewController.swift */,
-				DF8DB85B1EA1F5510068E563 /* CellDescriptor.plist */,
 			);
 			path = studentHandbook;
 			sourceTree = "<group>";
@@ -117,6 +114,7 @@
 				TargetAttributes = {
 					DF24D0781E35DBC20075F5A5 = {
 						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = 22J984A5FS;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -145,7 +143,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				DF24D0871E35DBC20075F5A5 /* LaunchScreen.storyboard in Resources */,
-				DF8DB85C1EA1F5510068E563 /* CellDescriptor.plist in Resources */,
 				DF24D0841E35DBC20075F5A5 /* Assets.xcassets in Resources */,
 				DF24D0821E35DBC20075F5A5 /* Main.storyboard in Resources */,
 			);
@@ -288,11 +285,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 22J984A5FS;
 				INFOPLIST_FILE = studentHandbook/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = edu.self.studentHandbook;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -300,11 +299,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 22J984A5FS;
 				INFOPLIST_FILE = studentHandbook/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = edu.self.studentHandbook;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

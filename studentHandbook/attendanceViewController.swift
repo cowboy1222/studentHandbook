@@ -8,13 +8,26 @@
 
 import UIKit
 
-class attendanceViewController: UIViewController {
+class attendanceViewController: UIViewController,UITableViewDelegate, UITableViewDataSource {
     
-    var cellDescriptors: NSMutableArray!
-    var visibleRowsPerSection = [[Int]]()
+    @IBOutlet weak var table: UITableView!
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        table.dataSource = self
+        table.delegate = self
+        
+        let username = UserDefaults.standard.string(forKey: "username");
+        let password = UserDefaults.standard.string(forKey: "password");
+
+        
+        let urlString = "https://lenchan139.org/myWorks/fyp/android/attendDetails.php?username=" + username! + "&password=" + password!;
+        
+        get_data("http://www.kaleidosblog.com/tutorial/tutorial.json")
+        
+        print(get_data(urlString))
 
         // Do any additional setup after loading the view.
     }
@@ -26,9 +39,113 @@ class attendanceViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        configureTableView()
         
-        loadCellDescriptors()
+    }
+    
+    var list:[MyStruct] = [MyStruct]()
+    
+    struct MyStruct
+    {
+        var abc = ""
+        var code = ""
+        
+        init(_ abc:String, _ code:String)
+        {
+            self.abc = abc
+            self.code = code
+        }
+    }
+    
+    
+    
+    
+    func get_data(_ link:String)
+    {
+        let url:URL = URL(string: link)!
+        let session = URLSession.shared
+        
+        let request = URLRequest(url: url)
+        
+        let task = session.dataTask(with: request, completionHandler: {
+            (data, response, error) in
+            
+            self.extract_data(data)
+            
+        })
+        
+        task.resume()
+    }
+    
+    
+    func extract_data(_ data:Data?)
+    {
+        let json:Any?
+        
+        if(data == nil)
+        {
+            return
+        }
+        
+        do{
+            json = try JSONSerialization.jsonObject(with: data!, options: [])
+        }
+        catch
+        {
+            return
+        }
+        
+        guard let data_array = json as? NSArray else
+        {
+            return
+        }
+        
+        
+        for i in 0 ..< data_array.count
+        {
+            if let data_object = data_array[i] as? NSDictionary
+            {
+                if let data_code = data_object["code"] as? String,
+                    let data_country = data_object["country"] as? String
+                {
+                    list.append(MyStruct(data_code, data_country))
+                }
+                
+            }
+        }
+        
+        
+        refresh_now()
+        
+        
+    }
+    
+    func refresh_now()
+    {
+        DispatchQueue.main.async(
+            execute:
+            {
+                self.table.reloadData()
+                
+        })
+    }
+    
+    
+    
+    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    {
+        
+        return list.count
+    }
+    
+    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
+    {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        
+        
+        cell.textLabel?.text = list[indexPath.row].code + " " +  list[indexPath.row].abc
+        
+        
+        return cell
     }
     
 
@@ -49,36 +166,7 @@ class attendanceViewController: UIViewController {
             
         }
     }
-    
-    func getIndicesOfVisibleRows() {
-        visibleRowsPerSection.removeAll()
-        
-        for currentSectionCells in cellDescriptors {
-            var visibleRows = [Int]()
-            
-            for row in 0...((currentSectionCells as! [[String: AnyObject]]).count - 1) {
-                if currentSectionCells[row]["isVisible"] as! Bool == true {
-                    visibleRows.append(row)
-                }
-            }
-            
-            visibleRowsPerSection.append(visibleRows)
-        }
-    }
-    
-    func loadCellDescriptors() {
-        if let path = Bundle.main.path(forResource: "CellDescriptor", ofType: "plist") {
-            cellDescriptors = NSMutableArray(contentsOfFile: path)
-            getIndicesOfVisibleRows()
-            tblExpandable.reloadData()
-        }
-    }
-    
-    func getCellDescriptorForIndexPath(indexPath: NSIndexPath) -> [String: AnyObject] {
-        let indexOfVisibleRow = visibleRowsPerSection[indexPath.section][indexPath.row]
-        let cellDescriptor = cellDescriptors[indexPath.section][indexOfVisibleRow] as! [String: AnyObject]
-        return cellDescriptor
-    }
+
     
     
     

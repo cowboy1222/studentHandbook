@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="7fc-BH-1YW">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="7fc-BH-1YW">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -56,16 +56,12 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button autoresizesSubviews="NO" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="avA-On-xV6">
-                                <rect key="frame" x="156" y="448" width="63" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ebe-Ox-QT5">
+                                <rect key="frame" x="168" y="149" width="38" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Login">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
+                                <state key="normal" title="Login"/>
                                 <connections>
-                                    <action selector="loginButtonWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="UEm-HM-tHc"/>
+                                    <action selector="loginBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Z9l-hP-HxI"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -76,13 +72,30 @@
                     <connections>
                         <outlet property="userEmailTextField" destination="uk6-I9-YuA" id="ZQc-Qm-xI1"/>
                         <outlet property="userPasswordTextField" destination="s02-pC-b4S" id="FqY-SK-LId"/>
-                        <outlet property="view" destination="avA-On-xV6" id="MMt-ii-1ga"/>
                         <segue destination="Gdh-GH-7Qs" kind="presentation" identifier="homePage" id="tmf-rY-jEb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="768.79999999999995" y="136.28185907046478"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="Sb1-mO-OID">
+            <objects>
+                <viewController id="4hB-uT-nrt" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="jnp-sW-KmX"/>
+                        <viewControllerLayoutGuide type="bottom" id="g89-Qh-Z48"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="vKO-ys-EPd">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8xL-5j-MFs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1468" y="716"/>
         </scene>
         <!--Main Page View Controller-->
         <scene sceneID="fVO-em-X94">
@@ -103,19 +116,13 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Im1-V6-NpV">
-                                <rect key="frame" x="246" y="121" width="61" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Logout"/>
-                                <connections>
-                                    <action selector="logoutBtn:" destination="Gdh-GH-7Qs" eventType="touchUpInside" id="xAE-FL-HtZ"/>
-                                    <segue destination="BYZ-38-t0r" kind="presentation" identifier="loginPage" id="rgo-Zy-g56"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="saC-aV-jgS">
                                 <rect key="frame" x="149" y="478" width="77" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="notification"/>
+                                <connections>
+                                    <segue destination="4hB-uT-nrt" kind="show" id="OZf-t2-GWt"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nTF-Ei-fXx">
                                 <rect key="frame" x="270" y="478" width="59" height="30"/>
@@ -157,6 +164,25 @@
                                     <segue destination="QXt-HY-syA" kind="show" id="Uty-tt-fE3"/>
                                 </connections>
                             </button>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="h03-Xi-dtI">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem title="Main Page" id="cjF-sF-QTd">
+                                        <barButtonItem key="rightBarButtonItem" style="plain" id="rYW-mK-SOf">
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Im1-V6-NpV">
+                                                <rect key="frame" x="298" y="7" width="61" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" title="Logout"/>
+                                                <connections>
+                                                    <action selector="logoutBtn:" destination="Gdh-GH-7Qs" eventType="touchUpInside" id="xAE-FL-HtZ"/>
+                                                    <segue destination="BYZ-38-t0r" kind="presentation" identifier="loginPage" id="rgo-Zy-g56"/>
+                                                </connections>
+                                            </button>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -185,16 +211,31 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kfM-vW-cGd">
-                                <rect key="frame" x="247" y="250" width="61" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Logout"/>
-                                <connections>
-                                    <action selector="logoutBtn:" destination="QXt-HY-syA" eventType="touchUpInside" id="Bsg-Aw-ex3"/>
-                                    <action selector="logoutBtn:" destination="Gdh-GH-7Qs" eventType="touchUpInside" id="rjL-Jy-YmT"/>
-                                    <segue destination="BYZ-38-t0r" kind="presentation" identifier="loginPage" id="AuU-0y-qTn"/>
-                                </connections>
-                            </button>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="37a-IC-K4N">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem title="Notice" id="G1J-3h-ez8">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="stop" id="Xeo-Wv-ZYR">
+                                            <connections>
+                                                <segue destination="Gdh-GH-7Qs" kind="show" id="G8h-a6-8s7"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" style="plain" id="Ift-kw-HXl">
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="kfM-vW-cGd">
+                                                <rect key="frame" x="298" y="7" width="61" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" title="Logout"/>
+                                                <connections>
+                                                    <action selector="logoutBtn:" destination="QXt-HY-syA" eventType="touchUpInside" id="Bsg-Aw-ex3"/>
+                                                    <action selector="logoutBtn:" destination="Gdh-GH-7Qs" eventType="touchUpInside" id="rjL-Jy-YmT"/>
+                                                    <segue destination="BYZ-38-t0r" kind="presentation" identifier="loginPage" id="AuU-0y-qTn"/>
+                                                </connections>
+                                            </button>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -222,22 +263,47 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bhe-lX-M8y">
-                                <rect key="frame" x="251" y="133" width="61" height="30"/>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lOA-lm-yLC">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem title="QR Code" id="OfD-XH-Fqs">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="stop" id="2vx-vN-jSP">
+                                            <connections>
+                                                <segue destination="Gdh-GH-7Qs" kind="show" id="nKj-mT-mDI"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" style="plain" id="rhV-NN-ShW">
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Bhe-lX-M8y">
+                                                <rect key="frame" x="298" y="7" width="61" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" title="Logout"/>
+                                                <connections>
+                                                    <action selector="logoutBtn:" destination="Gdh-GH-7Qs" eventType="touchUpInside" id="bgW-ep-MQy"/>
+                                                    <segue destination="BYZ-38-t0r" kind="presentation" identifier="loginPage" id="OXf-JI-NOa"/>
+                                                </connections>
+                                            </button>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="No QR Code is detected" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dAF-eQ-Cus">
+                                <rect key="frame" x="0.0" y="580" width="375" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Logout"/>
-                                <connections>
-                                    <action selector="logoutBtn:" destination="Gdh-GH-7Qs" eventType="touchUpInside" id="bgW-ep-MQy"/>
-                                    <segue destination="BYZ-38-t0r" kind="presentation" identifier="loginPage" id="OXf-JI-NOa"/>
-                                </connections>
-                            </button>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="label" destination="dAF-eQ-Cus" id="V2c-6o-DwR"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4QV-ln-gtT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2434" y="-1198"/>
+            <point key="canvasLocation" x="2333.5999999999999" y="-1055.6221889055473"/>
         </scene>
         <!--Attendance View Controller-->
         <scene sceneID="91P-JA-pKI">
@@ -251,26 +317,60 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="attendance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SeC-zg-As5">
-                                <rect key="frame" x="166" y="130" width="87" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pHZ-0f-Con">
-                                <rect key="frame" x="298" y="121" width="61" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Logout"/>
-                                <connections>
-                                    <action selector="logoutBtn:" destination="Gdh-GH-7Qs" eventType="touchUpInside" id="E3w-fE-Tiv"/>
-                                    <action selector="logoutBtn:" destination="jPC-Mz-Zsj" eventType="touchUpInside" id="XgV-Zx-Bca"/>
-                                    <segue destination="BYZ-38-t0r" kind="presentation" identifier="loginPage" id="5dA-PQ-MrO"/>
-                                </connections>
-                            </button>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1QM-Wl-r7b">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <items>
+                                    <navigationItem title="Attendance" id="LI9-9H-mP1">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="stop" id="32r-A5-RDd">
+                                            <connections>
+                                                <segue destination="Gdh-GH-7Qs" kind="show" id="T0z-LU-V9M"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" style="plain" id="s1B-gb-goe">
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="pHZ-0f-Con">
+                                                <rect key="frame" x="298" y="7" width="61" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" title="Logout"/>
+                                                <connections>
+                                                    <action selector="logoutBtn:" destination="Gdh-GH-7Qs" eventType="touchUpInside" id="E3w-fE-Tiv"/>
+                                                    <action selector="logoutBtn:" destination="jPC-Mz-Zsj" eventType="touchUpInside" id="XgV-Zx-Bca"/>
+                                                    <segue destination="BYZ-38-t0r" kind="presentation" identifier="loginPage" id="5dA-PQ-MrO"/>
+                                                </connections>
+                                            </button>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="gPw-Tl-2fD">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="LdU-9u-jvs">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="LdU-9u-jvs" id="mJS-IU-zBI">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="1QM-Wl-r7b" secondAttribute="trailing" id="0Li-gB-wp8"/>
+                            <constraint firstItem="gPw-Tl-2fD" firstAttribute="top" secondItem="1QM-Wl-r7b" secondAttribute="bottom" id="24c-GM-wVr"/>
+                            <constraint firstItem="gPw-Tl-2fD" firstAttribute="leading" secondItem="woF-6j-cIP" secondAttribute="leading" id="7ro-yT-1Ap"/>
+                            <constraint firstItem="1QM-Wl-r7b" firstAttribute="leading" secondItem="woF-6j-cIP" secondAttribute="leading" id="BBR-pI-fY9"/>
+                            <constraint firstAttribute="trailing" secondItem="gPw-Tl-2fD" secondAttribute="trailing" id="Ej4-il-ReW"/>
+                            <constraint firstItem="6hf-3t-Iif" firstAttribute="top" secondItem="gPw-Tl-2fD" secondAttribute="bottom" id="e9G-P3-uQx"/>
+                            <constraint firstItem="gPw-Tl-2fD" firstAttribute="top" secondItem="1QM-Wl-r7b" secondAttribute="bottom" id="ewa-8d-39q"/>
+                            <constraint firstItem="1QM-Wl-r7b" firstAttribute="top" secondItem="Q4G-DA-Abj" secondAttribute="bottom" id="iRg-Pc-IZi"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="table" destination="gPw-Tl-2fD" id="Mbd-AX-1DD"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="u9I-yB-FHZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -295,16 +395,31 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hlc-Gx-LSH">
-                                <rect key="frame" x="287" y="233" width="61" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Logout"/>
-                                <connections>
-                                    <action selector="logoutBtn:" destination="Gdh-GH-7Qs" eventType="touchUpInside" id="kd4-sa-1ls"/>
-                                    <action selector="logoutBtn:" destination="FVF-34-yYL" eventType="touchUpInside" id="zNf-If-f0F"/>
-                                    <segue destination="BYZ-38-t0r" kind="presentation" identifier="loginPage" id="VtW-bX-GBe"/>
-                                </connections>
-                            </button>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jex-yj-B1c">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem title="Homework" id="9Bf-WB-obE">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="stop" id="pdo-xM-p8i">
+                                            <connections>
+                                                <segue destination="Gdh-GH-7Qs" kind="show" id="WXC-0b-Zcp"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" style="plain" id="SL3-d4-RKO">
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="hlc-Gx-LSH">
+                                                <rect key="frame" x="298" y="7" width="61" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" title="Logout"/>
+                                                <connections>
+                                                    <action selector="logoutBtn:" destination="Gdh-GH-7Qs" eventType="touchUpInside" id="kd4-sa-1ls"/>
+                                                    <action selector="logoutBtn:" destination="FVF-34-yYL" eventType="touchUpInside" id="zNf-If-f0F"/>
+                                                    <segue destination="BYZ-38-t0r" kind="presentation" identifier="loginPage" id="VtW-bX-GBe"/>
+                                                </connections>
+                                            </button>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -332,16 +447,31 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qO1-Td-XKX">
-                                <rect key="frame" x="246" y="286" width="61" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Logout"/>
-                                <connections>
-                                    <action selector="logoutBtn:" destination="gKs-w6-eFK" eventType="touchUpInside" id="jeK-za-IKO"/>
-                                    <action selector="logoutBtn:" destination="Gdh-GH-7Qs" eventType="touchUpInside" id="w1l-oZ-b1g"/>
-                                    <segue destination="BYZ-38-t0r" kind="presentation" identifier="loginPage" id="g3t-DV-uSH"/>
-                                </connections>
-                            </button>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="22c-OM-md0">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem title="Handbook" id="c6L-eU-Nyb">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="stop" id="LlX-nI-SIW">
+                                            <connections>
+                                                <segue destination="Gdh-GH-7Qs" kind="show" id="ZWR-MG-4dW"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" style="plain" id="qQv-lo-Jtf">
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="qO1-Td-XKX">
+                                                <rect key="frame" x="298" y="7" width="61" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" title="Logout"/>
+                                                <connections>
+                                                    <action selector="logoutBtn:" destination="gKs-w6-eFK" eventType="touchUpInside" id="jeK-za-IKO"/>
+                                                    <action selector="logoutBtn:" destination="Gdh-GH-7Qs" eventType="touchUpInside" id="w1l-oZ-b1g"/>
+                                                    <segue destination="BYZ-38-t0r" kind="presentation" identifier="loginPage" id="g3t-DV-uSH"/>
+                                                </connections>
+                                            </button>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -369,14 +499,29 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D2i-lT-o5C">
-                                <rect key="frame" x="215" y="274" width="61" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Logout"/>
-                                <connections>
-                                    <action selector="logoutBtn:" destination="Gdh-GH-7Qs" eventType="touchUpInside" id="zWW-Kw-nLx"/>
-                                </connections>
-                            </button>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MPH-P5-3sv">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem title="Notififcation" id="29H-wA-Ebs">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="stop" id="AMO-Cp-mcb">
+                                            <connections>
+                                                <segue destination="Gdh-GH-7Qs" kind="show" id="ieh-Y0-6LW"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" style="plain" id="Y4d-he-YZX">
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="D2i-lT-o5C">
+                                                <rect key="frame" x="298" y="7" width="61" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" title="Logout"/>
+                                                <connections>
+                                                    <action selector="logoutBtn:" destination="Gdh-GH-7Qs" eventType="touchUpInside" id="zWW-Kw-nLx"/>
+                                                </connections>
+                                            </button>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -405,6 +550,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="5dA-PQ-MrO"/>
+        <segue reference="tmf-rY-jEb"/>
+        <segue reference="OXf-JI-NOa"/>
     </inferredMetricsTieBreakers>
 </document>
