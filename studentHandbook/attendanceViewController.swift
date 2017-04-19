@@ -23,11 +23,11 @@ class attendanceViewController: UIViewController,UITableViewDelegate, UITableVie
         let password = UserDefaults.standard.string(forKey: "password");
 
         
-        let urlString = "https://lenchan139.org/myWorks/fyp/android/attendDetails.php?username=" + username! + "&password=" + password!;
+        //let urlString = "https://lenchan139.org/myWorks/fyp/android/attendDetails.php?username=" + username! + "&password=" + password!;
         
         get_data("http://www.kaleidosblog.com/tutorial/tutorial.json")
         
-        print(get_data(urlString))
+        //print(get_data(urlString))
 
         // Do any additional setup after loading the view.
     }

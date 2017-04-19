@@ -11,97 +11,103 @@ import AVFoundation
 
 class QRCodeViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
     
-    
-    @IBOutlet weak var label: UILabel!
+    @IBOutlet weak var label:UILabel!
     
     var captureSession:AVCaptureSession?
     var videoPreviewLayer:AVCaptureVideoPreviewLayer?
     var qrCodeFrameView:UIView?
-
+    
+    // Added to support different barcodes
+    let supportedBarCodes = [AVMetadataObjectTypeQRCode, AVMetadataObjectTypeCode128Code, AVMetadataObjectTypeCode39Code, AVMetadataObjectTypeCode93Code, AVMetadataObjectTypeUPCECode, AVMetadataObjectTypePDF417Code, AVMetadataObjectTypeEAN13Code, AVMetadataObjectTypeAztecCode]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // 取得 AVCaptureDevice 類別的實體來初始化一個device物件，並提供video
-        // 作為媒體型態參數
         
-        
-        
-        // 使用前面的 device 物件取得 AVCaptureDeviceInput 類別的實體
-        
+        // Get an instance of the AVCaptureDevice class to initialize a device object and provide the video
+        // as the media type parameter.
+        let captureDevice = AVCaptureDevice.defaultDevice(withMediaType: AVMediaTypeVideo)
         
         do {
-            let captureDevice = AVCaptureDevice.defaultDevice(withMediaType: AVMediaTypeVideo)
+            // Get an instance of the AVCaptureDeviceInput class using the previous device object.
             let input = try AVCaptureDeviceInput(device: captureDevice)
-            // Do the rest of your work...
-            // 初始化 captureSession 物件
-            captureSession = AVCaptureSession()
-            // 在capture session 設定輸入裝置
-            captureSession?.addInput(input as AVCaptureInput)
             
+            // Initialize the captureSession object.
+            captureSession = AVCaptureSession()
+            // Set the input device on the capture session.
+            captureSession?.addInput(input)
+            
+            // Initialize a AVCaptureMetadataOutput object and set it as the output device to the capture session.
             let captureMetadataOutput = AVCaptureMetadataOutput()
             captureSession?.addOutput(captureMetadataOutput)
             
+            // Set delegate and use the default dispatch queue to execute the call back
             captureMetadataOutput.setMetadataObjectsDelegate(self, queue: DispatchQueue.main)
-            captureMetadataOutput.metadataObjectTypes = [AVMetadataObjectTypeQRCode]
             
+            // Detect all the supported bar code
+            captureMetadataOutput.metadataObjectTypes = supportedBarCodes
+            
+            // Initialize the video preview layer and add it as a sublayer to the viewPreview view's layer.
             videoPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
             videoPreviewLayer?.videoGravity = AVLayerVideoGravityResizeAspectFill
             videoPreviewLayer?.frame = view.layer.bounds
             view.layer.addSublayer(videoPreviewLayer!)
             
+            // Start video capture
             captureSession?.startRunning()
             
+            // Move the message label to the top view
+            view.bringSubview(toFront: label)
+            
+            // Initialize QR Code Frame to highlight the QR code
             qrCodeFrameView = UIView()
-            qrCodeFrameView?.layer.borderColor = UIColor.green.cgColor
-            qrCodeFrameView?.layer.borderWidth = 2
-            view.addSubview(qrCodeFrameView!)
-            view.bringSubview(toFront: qrCodeFrameView!)
             
+            if let qrCodeFrameView = qrCodeFrameView {
+                qrCodeFrameView.layer.borderColor = UIColor.green.cgColor
+                qrCodeFrameView.layer.borderWidth = 2
+                view.addSubview(qrCodeFrameView)
+                view.bringSubview(toFront: qrCodeFrameView)
+            }
             
-            
-        } catch let error as NSError {
-            // Handle any errors
+        } catch {
+            // If any error occurs, simply print it out and don't continue any more.
             print(error)
-        }
-    }
-    
-    private func captureOutput(captureOutput: AVCaptureOutput!, didOutputMetadataObjects metadataObjects: [AnyObject]!, fromConnection connection: AVCaptureConnection!) {
-        // 檢查 metadataObjects 陣列是否為非空值，它至少需包含一個物件
-        if metadataObjects == nil || metadataObjects.count == 0 {
-            qrCodeFrameView?.frame = CGRect.zero
-            label.text = "No QR code is detected"
             return
         }
         
-        // 取得元資料（metadata）物件
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    func captureOutput(_ captureOutput: AVCaptureOutput!, didOutputMetadataObjects metadataObjects: [Any]!, from connection: AVCaptureConnection!) {
+        
+        // Check if the metadataObjects array is not nil and it contains at least one object.
+        if metadataObjects == nil || metadataObjects.count == 0 {
+            qrCodeFrameView?.frame = CGRect.zero
+            label.text = "No barcode/QR code is detected"
+            return
+        }
+        
+        // Get the metadata object.
         let metadataObj = metadataObjects[0] as! AVMetadataMachineReadableCodeObject
-        if metadataObj.type == AVMetadataObjectTypeQRCode {
+        
+        // Here we use filter method to check if the type of metadataObj is supported
+        // Instead of hardcoding the AVMetadataObjectTypeQRCode, we check if the type
+        // can be found in the array of supported bar codes.
+        if supportedBarCodes.contains(metadataObj.type) {
+            //        if metadataObj.type == AVMetadataObjectTypeQRCode {
+            // If the found metadata is equal to the QR code metadata then update the status label's text and set the bounds
+            let barCodeObject = videoPreviewLayer?.transformedMetadataObject(for: metadataObj)
+            qrCodeFrameView?.frame = barCodeObject!.bounds
             
-            //倘若發現的原資料與 QR code 原資料相同，便更新狀態標籤的文字並設定邊界
-            let barCodeObject = videoPreviewLayer?.transformedMetadataObject(for: metadataObj as
-                AVMetadataMachineReadableCodeObject) as! AVMetadataMachineReadableCodeObject
-            qrCodeFrameView?.frame = barCodeObject.bounds;
             if metadataObj.stringValue != nil {
                 label.text = metadataObj.stringValue
-                
-                let barCodeObject = videoPreviewLayer?.transformedMetadataObject(
-                    for: metadataObj as AVMetadataMachineReadableCodeObject) as! AVMetadataMachineReadableCodeObject
-                
-                qrCodeFrameView?.frame = barCodeObject.bounds
             }
-            
-            
         }
     }
-    
-
-        // Do any additional setup after loading the view.
-    }
-
-
-
-
-    
-
+}
     /*
     // MARK: - Navigation
 

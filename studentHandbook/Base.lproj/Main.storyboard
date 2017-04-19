@@ -169,16 +169,15 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
                                     <navigationItem title="Main Page" id="cjF-sF-QTd">
-                                        <barButtonItem key="rightBarButtonItem" style="plain" id="rYW-mK-SOf">
-                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Im1-V6-NpV">
-                                                <rect key="frame" x="298" y="7" width="61" height="30"/>
+                                        <barButtonItem key="rightBarButtonItem" style="plain" id="VZM-69-RNH">
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="dhj-we-GEK">
+                                                <rect key="frame" x="285" y="7" width="74" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" title="Logout"/>
-                                                <connections>
-                                                    <action selector="logoutBtn:" destination="Gdh-GH-7Qs" eventType="touchUpInside" id="xAE-FL-HtZ"/>
-                                                    <segue destination="BYZ-38-t0r" kind="presentation" identifier="loginPage" id="rgo-Zy-g56"/>
-                                                </connections>
                                             </button>
+                                            <connections>
+                                                <action selector="logoutBtn:" destination="Gdh-GH-7Qs" id="D2L-hB-9xN"/>
+                                            </connections>
                                         </barButtonItem>
                                     </navigationItem>
                                 </items>
@@ -550,7 +549,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="tmf-rY-jEb"/>
+        <segue reference="nKj-mT-mDI"/>
         <segue reference="OXf-JI-NOa"/>
     </inferredMetricsTieBreakers>
 </document>

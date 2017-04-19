@@ -29,8 +29,6 @@ class mainPageViewController: UIViewController {
     
     
     
-    
-    
     @IBAction func logoutBtn(_ sender: Any) {
         
         UserDefaults.standard.set(nil, forKey: "username");
@@ -47,6 +45,9 @@ class mainPageViewController: UIViewController {
         }
         
     }
+    
+    
+    
     
     
 
