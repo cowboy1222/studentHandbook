@@ -8,146 +8,96 @@
 
 import UIKit
 
-class attendanceViewController: UIViewController,UITableViewDelegate, UITableViewDataSource {
+class attendanceViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
     
     @IBOutlet weak var table: UITableView!
-    
+    var studArray: [attendance]? = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        table.dataSource = self
-        table.delegate = self
+        //table.dataSource = self
+        //table.delegate = self
         
-        let username = UserDefaults.standard.string(forKey: "username");
-        let password = UserDefaults.standard.string(forKey: "password");
+        
+        
+        
+        fetchstDetails()
+        
+    }
+    
 
-        
-        //let urlString = "https://lenchan139.org/myWorks/fyp/android/attendDetails.php?username=" + username! + "&password=" + password!;
-        
-        get_data("http://www.kaleidosblog.com/tutorial/tutorial.json")
-        
-        //print(get_data(urlString))
 
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    
+    
+    func fetchstDetails(){
         
-    }
-    
-    var list:[MyStruct] = [MyStruct]()
-    
-    struct MyStruct
-    {
-        var abc = ""
-        var code = ""
+        let username = "parentX"
+        let password = "pw"
         
-        init(_ abc:String, _ code:String)
-        {
-            self.abc = abc
-            self.code = code
-        }
-    }
-    
-    
-    
-    
-    func get_data(_ link:String)
-    {
-        let url:URL = URL(string: link)!
-        let session = URLSession.shared
         
-        let request = URLRequest(url: url)
+        let urlString = "https://lenchan139.org/myWorks/fyp/android/attendDetails.php?username=" + username + "&password=" + password
         
-        let task = session.dataTask(with: request, completionHandler: {
-            (data, response, error) in
+        let urlRequest = URLRequest(url:URL(string: urlString)!)
+        
+        let task = URLSession.shared.dataTask(with: urlRequest) { (data,response,error) in
             
-            self.extract_data(data)
+            if error != nil{
             
-        })
-        
+                print(error)
+                return
+            
+            }
+            self.studArray = [attendance]()
+            do {
+                
+                let json = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers) as! [String:AnyObject]
+                if let attJson = json["studArray"] as? [[String : AnyObject]] {
+                    for stDetails in attJson{
+                        
+                        let stdAtt = attendance()
+                        if let stdId = stDetails["student_id"] as? String, let stdClass = stDetails["student_class"] as? String,let stdName = stDetails["student_name"] as? String/*, let stdDate = stDetails["student_attend"] as? String*/{
+                            
+                            stdAtt.stdId = stdId
+                            stdAtt.stdClass = stdClass
+                            //stdAtt.stdDate = stdDate
+                            stdAtt.stdName = stdName
+                            
+                            
+                        }
+                        self.studArray?.append(stdAtt)
+                    }
+                }
+                
+                DispatchQueue.main.sync {
+                    self.table.reloadData()
+                }
+                
+            } catch let error {
+                print(error)
+            }
+    }
         task.resume()
     }
     
-    
-    func extract_data(_ data:Data?)
-    {
-        let json:Any?
-        
-        if(data == nil)
-        {
-            return
-        }
-        
-        do{
-            json = try JSONSerialization.jsonObject(with: data!, options: [])
-        }
-        catch
-        {
-            return
-        }
-        
-        guard let data_array = json as? NSArray else
-        {
-            return
-        }
-        
-        
-        for i in 0 ..< data_array.count
-        {
-            if let data_object = data_array[i] as? NSDictionary
-            {
-                if let data_code = data_object["code"] as? String,
-                    let data_country = data_object["country"] as? String
-                {
-                    list.append(MyStruct(data_code, data_country))
-                }
-                
-            }
-        }
-        
-        
-        refresh_now()
-        
-        
-    }
-    
-    func refresh_now()
-    {
-        DispatchQueue.main.async(
-            execute:
-            {
-                self.table.reloadData()
-                
-        })
-    }
-    
-    
-    
-    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
-    {
-        
-        return list.count
-    }
-    
-    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
-    {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        
-        
-        cell.textLabel?.text = list[indexPath.row].code + " " +  list[indexPath.row].abc
-        
-        
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "attCell", for: indexPath) as! TableViewCell
+        cell.attDate.text = "hahaha"
+        cell.stdName.text = self.studArray?[indexPath.item].stdName
+        cell.stdClass.text = self.studArray?[indexPath.item].stdClass
         return cell
     }
     
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.studArray?.count ?? 0
+        
+    }
 
     
     

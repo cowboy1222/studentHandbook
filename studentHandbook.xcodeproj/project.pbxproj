@@ -18,6 +18,8 @@
 		DF36269B1E9C7C0700757448 /* attendanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF36269A1E9C7C0700757448 /* attendanceViewController.swift */; };
 		DF36269D1E9C7C1700757448 /* homeworkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF36269C1E9C7C1700757448 /* homeworkViewController.swift */; };
 		DF36269F1E9C7C2400757448 /* handbookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF36269E1E9C7C2400757448 /* handbookViewController.swift */; };
+		DF8DEC371EABB98200542506 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8DEC361EABB98200542506 /* TableViewCell.swift */; };
+		DF8DEC391EABBB3000542506 /* attendance.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8DEC381EABBB3000542506 /* attendance.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +36,8 @@
 		DF36269A1E9C7C0700757448 /* attendanceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = attendanceViewController.swift; sourceTree = "<group>"; };
 		DF36269C1E9C7C1700757448 /* homeworkViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = homeworkViewController.swift; sourceTree = "<group>"; };
 		DF36269E1E9C7C2400757448 /* handbookViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = handbookViewController.swift; sourceTree = "<group>"; };
+		DF8DEC361EABB98200542506 /* TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		DF8DEC381EABBB3000542506 /* attendance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = attendance.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +73,7 @@
 				DF24D07C1E35DBC20075F5A5 /* AppDelegate.swift */,
 				DF24D07E1E35DBC20075F5A5 /* ViewController.swift */,
 				DF24D0801E35DBC20075F5A5 /* Main.storyboard */,
+				DF8DEC381EABBB3000542506 /* attendance.swift */,
 				DF24D0831E35DBC20075F5A5 /* Assets.xcassets */,
 				DF24D0851E35DBC20075F5A5 /* LaunchScreen.storyboard */,
 				DF24D0881E35DBC20075F5A5 /* Info.plist */,
@@ -78,6 +83,7 @@
 				DF36269A1E9C7C0700757448 /* attendanceViewController.swift */,
 				DF36269C1E9C7C1700757448 /* homeworkViewController.swift */,
 				DF36269E1E9C7C2400757448 /* handbookViewController.swift */,
+				DF8DEC361EABB98200542506 /* TableViewCell.swift */,
 			);
 			path = studentHandbook;
 			sourceTree = "<group>";
@@ -158,6 +164,8 @@
 				DF24D07F1E35DBC20075F5A5 /* ViewController.swift in Sources */,
 				DF36269D1E9C7C1700757448 /* homeworkViewController.swift in Sources */,
 				DF36269B1E9C7C0700757448 /* attendanceViewController.swift in Sources */,
+				DF8DEC371EABB98200542506 /* TableViewCell.swift in Sources */,
+				DF8DEC391EABBB3000542506 /* attendance.swift in Sources */,
 				DF24D07D1E35DBC20075F5A5 /* AppDelegate.swift in Sources */,
 				DF36269F1E9C7C2400757448 /* handbookViewController.swift in Sources */,
 				DF3626971E9B4A7C00757448 /* QRCodeViewController.swift in Sources */,
