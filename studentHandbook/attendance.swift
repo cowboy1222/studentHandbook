@@ -13,7 +13,7 @@ class attendance: NSObject {
     var stdId:String?
     var stdClass:String?
     var stdName:String?
-    var attDate:String?
+    var attDate:[String:AnyObject]?
     
     
 

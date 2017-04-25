@@ -45,7 +45,7 @@ class attendanceViewController: UIViewController, UITableViewDelegate, UITableVi
             
             if error != nil{
             
-                print(error)
+                print(error!)
                 return
             
             }
@@ -54,21 +54,32 @@ class attendanceViewController: UIViewController, UITableViewDelegate, UITableVi
                 
                 let json = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers) as! [String:AnyObject]
                 if let attJson = json["studArray"] as? [[String : AnyObject]] {
+                    
+                    //let attDate = json["student_attend"]?["student_date"]
+                    //print(attDate)
+                    //for i in 0...(attDate?.count)!-1{
                     for stDetails in attJson{
                         
                         let stdAtt = attendance()
-                        if let stdId = stDetails["student_id"] as? String, let stdClass = stDetails["student_class"] as? String,let stdName = stDetails["student_name"] as? String/*, let stdDate = stDetails["student_attend"] as? String*/{
+                        if let stdId = stDetails["student_id"] as? String, let stdClass = stDetails["student_class"] as? String,let stdName = stDetails["student_name"] as? String, let stdDate = stDetails["studend_attend"] as? Array<AnyObject>{
                             
                             stdAtt.stdId = stdId
                             stdAtt.stdClass = stdClass
-                            //stdAtt.stdDate = stdDate
+                            //stdAtt.attDate = eachAttDate
                             stdAtt.stdName = stdName
                             
                             
+                            for dateArray in stdDate{
+                                stdAtt.attDate = dateArray as? [String:AnyObject]
+                                let date = dateArray["attend_date"] as! String
+                                print(date)
+                            }
+                            print(stdAtt.attDate!)
                         }
                         self.studArray?.append(stdAtt)
                     }
                 }
+                //}
                 
                 DispatchQueue.main.sync {
                     self.table.reloadData()
@@ -83,7 +94,8 @@ class attendanceViewController: UIViewController, UITableViewDelegate, UITableVi
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "attCell", for: indexPath) as! TableViewCell
-        cell.attDate.text = "hahaha"
+        cell.attDate.text = self.studArray?[indexPath.item].attDate?["attend_date"] as? String
+        //cell.attDate.text = "hehehe"
         cell.stdName.text = self.studArray?[indexPath.item].stdName
         cell.stdClass.text = self.studArray?[indexPath.item].stdClass
         return cell
